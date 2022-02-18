@@ -11,7 +11,7 @@ private:
 
 public:
     void getTime();
-    void sleepTime(int h, int m, int s);
+    Time sleepTime(Time t1, Time t2);
 };
 
 class Date
@@ -43,9 +43,13 @@ void Time::getTime()
     setTime();
     cout << "\ncurrent time is: " << hour << ":" << minute << ":" << secs << "\n";
 }
-void Time::sleepTime(int h, int m, int s)
+Time Time::sleepTime(Time t1, Time t2)
 {
-    cout << "\nsleep time is: " << h - hour << ":" << m - minute << ":" << s - secs << "\n";
+    Time t3;
+    t3.hour = t2.hour-t1.hour;
+    t3.minute = t2.minute-t1.minute;
+    t3.secs = t2.secs-t1.secs;
+    return t3;
 }
 
 // date functions
@@ -79,9 +83,14 @@ int main()
 
     // get current time
     Time time1;
+    Time time2;
+    Time time3;
+    Time time4;
     // time1.setTime();
     time1.getTime();
-    time1.sleepTime(21, 0, 0);
+    cout << "sleeptime called" << endl;
+    time3 = time3.sleepTime(time1, time2);
+    time3.getTime();
 
     Date date1;
     // date1.setDate();
