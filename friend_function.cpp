@@ -17,6 +17,21 @@ class Complex{
         friend Complex sumComplex(Complex c1, Complex c2);
 };
 
+class Complex1{
+    int a, b;
+    public:
+        void setComplex1(int x, int y){
+            a = x;
+            b = y;
+        }
+
+        void printComplex1(){
+            cout << a << " + " << b << "i" << endl;
+        }
+};
+
+
+
 Complex sumComplex(Complex c1, Complex c2){
     Complex c3;
     c3.setComplex((c1.a+c2.a), (c1.b+c2.b));
@@ -34,6 +49,16 @@ int main()
 
     cp3 = sumComplex(cp1, cp2);
     cp3.printComplex();
+
+    // Complex1 cp4, cp5, cp6;
+    // cp4.setComplex1(5, 5);
+    // cp4.printComplex1();
+
+    // cp5.setComplex1(5, 5);
+    // cp5.printComplex1();
+
+    // cp6 = sumComplex(cp4, cp5);
+    // cp6.printComplex1();
     return 0;
 }
 

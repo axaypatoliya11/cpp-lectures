@@ -17,12 +17,20 @@ class Distance{
         Distance(){
             cout<<"normal constructor called";
         };
+        // copy constructor
+        Distance(Distance &p1){
+            feet = p1.feet;
+            inch = p1.inch;
+            cout<<"copy constructor called"<<endl;
+        };
 };
 
 
 int main(){
 
-    Distance first(10,20);
+    Distance first(90,100);
+    Distance second = first;
+    cout<<second.feet << " and " << second.inch<<endl;
 
     return 0;
 }
