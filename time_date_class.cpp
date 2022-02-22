@@ -89,8 +89,8 @@ int main()
     // time1.setTime();
     time1.getTime();
     cout << "sleeptime called" << endl;
-    time3 = time3.sleepTime(time1, time2);
-    time3.getTime();
+    time3.sleepTime(time1, time2).getTime();
+    // time3.getTime();
 
     Date date1;
     // date1.setDate();

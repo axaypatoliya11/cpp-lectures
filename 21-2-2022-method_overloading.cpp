@@ -1,4 +1,5 @@
 #include<iostream>
+#include<string>
 
 using namespace std;
 
@@ -26,5 +27,6 @@ int main(){
     cout<<sum(1,2,3,4)<<endl;
 
     cout<<"full name is: "<<sum("John", "Doe")<<endl;
+
     return 0;
 }
