@@ -16,14 +16,14 @@ class Sample{
             cout<<"a = "<<a<<","<<"b = "<<b<<endl;
         }
 
-        friend Sample operator--(Sample passed){
+        friend Sample operator--(Sample &passed){ //passing by reference so that object values can be change actually
             Sample temp;
             temp.a = --passed.a;
             temp.b = --passed.b;
             return temp;
         }
 
-        friend Sample operator++(Sample passed){
+        friend Sample operator++(Sample &passed){
             Sample temp;
             temp.a = ++passed.a;
             temp.b = ++passed.b;
