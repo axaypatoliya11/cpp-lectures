@@ -2,7 +2,7 @@
 
 using namespace std;
 
-// common class which will be there for multiple classes
+// common class which wil be there for multiple classes
 class Person{
     int age, height, weight;
     public:
@@ -25,10 +25,13 @@ class Doctor:public Person{
         }
 };
 
-class Nurse{
+class Nurse:public Person{
     public:
         void nurse(){
             cout<<"this is a nurse class method"<<endl;
+        }
+        void accessTalk(){
+            Talk();
         }
 };
 
@@ -42,12 +45,11 @@ class Patient:public Nurse, public Doctor{
 int main(){
 
     Patient mark;
-    mark.Talk();
-    mark.Walk();
-    mark.Eat();
     mark.doc(); //we can call this method here because Doctor class is inherited to the Nurse class
     mark.nurse();
     mark.patient();
+
+    mark.accessTalk(); //we can't directly access the Talk function so we written one method inside a Nurse function and this function contains calls Talk() internally, we can call methods from Nurse so this is how we can access the Talk() function
 
 
     return 0;
