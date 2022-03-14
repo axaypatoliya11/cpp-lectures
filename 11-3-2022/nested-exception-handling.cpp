@@ -44,7 +44,7 @@ int main(){
         {
             cout<<"unknown exception"<<endl;
         }
-        // throw 0;
+        // throw;
     }
     catch(int a)
     {   
