@@ -7,7 +7,8 @@ int main(){
     file.open("data.txt", ios::out | ios::app);
 
     if (file.fail()){
-        cout << "did nor open" << endl;}
+        cout << "did nor open" << endl;
+    }
     else{
         cout << "name" << endl;
         cin.getline(line, 100);

@@ -2,76 +2,80 @@
 #include <fstream>
 using namespace std;
 
-class student
-{
-public:
-    string id, name, branch, location;
-    fstream fp;
+class student{
+    public:
+        char ID[50];
+        char student_name[50];
+        char branch[50];
+        char location[50];
 
-    student()
-    {
-    }
-
-    void getdata()
-    {
-
-        fp.open("file.txt", ios::app | ios::in | ios::out);
-
-        cout << "enter ID:";
-        cin >> id;
-        cout << "enter name:";
-        cin >> name;
-        cout << "enter branch:";
-        cin >> branch;
-        cout << "enter location:";
-        cin >> location;
-
-        fp << id + " " + name + " " + branch + " " + location + '\n';
-    }
-
-    void display(string k)
-    {
-        fstream fp;
-        student s;
-        string id;
-        char buf[50];
-
-        fp.open("file.txt", ios::app | ios::in | ios::out);
-
-        while (!fp.eof())
-        {
-            fp >> id;
-
-            if (k == id)
-            {
-                fp.getline(buf, 50);
-                cout << k << buf << endl;
-            }
+        void getdata(){
+            cout<<"enter ID:"<<endl;
+            cin>>ID;
+            cout<<"enter student name"<<endl;
+            cin>>student_name;
+            cout<<"enter branch"<<endl;
+            cin>>branch; 
+            cout<<"enter location"<<endl;
+            cin>>location;
         }
-    }
+
+        void AddRecord(){
+            fstream f;
+            student stu;
+            f.open("student.txt", ios::app|ios::binary);
+            stu.getdata();
+            f.write((char*)&stu, sizeof(stu));
+            f.close();
+        }
+
+        void display(){
+            fstream f; 
+            student stu;
+            f.open("student.txt", ios::in|ios::binary);
+            while(!f.eof()){ //this while loop will print all the object present in the file
+                f.read((char *)&stu, sizeof(stu));
+                cout<<"ID: "<<stu.ID<<endl<<"student name: "<<stu.student_name<<endl<<"branch: "<<stu.branch<<endl<<"location: "<<location<<endl<<endl;
+            }
+            f.close();
+        }
+
+        void findFromID(string id){
+            fstream f; 
+            student stu;
+            f.open("student.txt", ios::in|ios::binary);
+            while(!f.eof()){ //this while loop will print all the object present in the file
+                f.read((char *)&stu, sizeof(stu));
+                if(id==stu.ID){
+                    cout<<"ID: "<<stu.ID<<endl<<"student name: "<<stu.student_name<<endl<<"branch: "<<stu.branch<<endl<<"location: "<<stu.location<<endl<<endl;
+                }
+            }
+            f.close();
+        }
 };
 
-int main()
-{
-    student s;
-    string id;
-    int choice;
+int main(){
+    student s1;
+    char ch='n';
 
-    cout << "1 to add data 2 to fetch from id:" << endl;
-    cout << "enter your choice:" << endl;
-    cin >> choice;
+    int op;
+    cout<<"enter 1 to add a data & 2 for display the data: "<<endl;
+    cin>>op;
 
-    if (choice == 1)
-    {
-        s.getdata();
+    if(op==1){
+        do{ 
+            s1.AddRecord(); //no need to call getdata() because AddRecord() will call getdata()
+            cout<<"want to add more?(y/n)"<<endl;
+            cin>>ch;
+        } while(ch=='y'||ch=='Y');
+    } else{
+        cout<<"enter the ID to find: ";
+        string id;
+        cin>>id;
+        s1.findFromID(id);
     }
 
-    else if (choice == 2)
-    {
-        cout << "which id?" << endl;
-        cin >> id;
-        s.display(id);
-    }
+    cout<<"updated!!!"<<endl;
 
     return 0;
 }
