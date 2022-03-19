@@ -60,7 +60,14 @@ int main(){
 
     int op;
     cout<<"enter 1 to add a data & 2 for display the data: "<<endl;
-    cin>>op;
+    try{
+        cin>>op;
+        if(op!=1 || op!=2){
+            throw 'e';
+        } 
+    } catch(char a){
+        cout<<"Exception: please enter either 1 or 2 as an option"<<endl;
+    }
 
     if(op==1){
         do{ 
@@ -68,7 +75,7 @@ int main(){
             cout<<"want to add more?(y/n)"<<endl;
             cin>>ch;
         } while(ch=='y'||ch=='Y');
-    } else{
+    } else if(op==2){
         cout<<"enter the ID to find: ";
         string id;
         cin>>id;
