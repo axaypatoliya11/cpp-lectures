@@ -51,7 +51,6 @@ int main(){
         } else if(option==2){
             cout<<"enter the ID: ";
             cin>>ID;
-
             while(!file.eof()) {
                 file>>temp;
                 if(temp==ID){
